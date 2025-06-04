@@ -5,20 +5,14 @@ import {
   Menu,
   X,
   Code,
-  Palette,
-  Smartphone,
-  Globe,
   Star,
   Mail,
   Phone,
   MapPin,
   ArrowRight,
   CheckCircle,
-  ChevronLeft, // Added for navigation arrows
-  ChevronRight, // Added for navigation arrows
-  Layout, // Added for UI/UX Design icon
-  TrendingUp, // Added for SEO & Digital Marketing icon
 } from "lucide-react"
+import {SparklesCore} from '../components/ui/sparkles'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -39,7 +33,7 @@ export default function VeridianWebPortfolio() {
 
   return (
     // Main container with the overall background gradient matching the image
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br  from-[#0a0a2b] via-[#0a1a3d] to-[#1a003d] text-white ">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-gradient-to-br from-indigo-900 via-blue-900 text-white">
         <div className="container mx-auto  ">
@@ -102,7 +96,8 @@ export default function VeridianWebPortfolio() {
 
 
       {/* My  Hero  Section */}
-{/*
+      
+  {/*
       <section id="home" className="min-h-screen flex items-center justify-center  relative overflow-hidden">
         <div className="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center justify-between relative z-10">
           <div className="md:w-1/2 text-center md:text-left mb-12 md:mb-0 relative">
@@ -147,36 +142,77 @@ export default function VeridianWebPortfolio() {
 
 
 {/* Default Hero Section */}
-  <section id="home" className="min-h-screen flex items-center justify-center pt-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="rounded-3xl borderp-12 max-w-4xl mx-auto">
-            <div className="w-24 h-24 bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
-              <Globe className="w-12 h-12 text-white" />
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">Veridian Web</h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Crafting Digital Excellence Through Innovative Web Development & Stunning Graphics Design
-            </p>
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 text-lg"
-            >
-              Get Started <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </div>
-        </div>
-      </section>
+  <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+  {/* Orb Container */}
+  <div className="absolute inset-0 pointer-events-none z-10">
+    <div className="absolute rounded-full bg-gradient-to-r from-blue-300 to-purple-400 opacity-50 filter blur-xl animate-pulse" style={{ top: '10%', left: '10%', width: '100px', height: '100px' }}></div>
+    <div className="absolute rounded-full bg-gradient-to-r from-purple-400 to-pink-500 opacity-50 filter blur-xl animate-pulse delay-1000" style={{ top: '10%', right: '15%', width: '150px', height: '150px' }}></div>
+    <div className="absolute rounded-full bg-gradient-to-r from-pink-500 to-red-400 opacity-50 filter blur-xl animate-pulse delay-2000" style={{ bottom: '20%', left: '25%', width: '80px', height: '80px' }}></div>
+    <div className="absolute rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 opacity-50 filter blur-xl animate-pulse delay-500" style={{ bottom: '10%', right: '30%', width: '120px', height: '120px' }}></div>
+    <div className="absolute rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 opacity-50 filter blur-xl animate-pulse delay-500" style={{ bottom: '50%', right: '30%', width: '120px', height: '120px' }}></div>
+    <div className="absolute rounded-full bg-gradient-to-r from-green-300 to-yellow-400 opacity-50 filter blur-xl animate-pulse delay-1500" style={{ top: '35%', left: '20%', width: '110px', height: '110px' }}></div>
+    <div className="absolute rounded-full bg-gradient-to-r from-yellow-400 to-green-500 opacity-50 filter blur-xl animate-pulse delay-2500" style={{ top: '40%', right: '15%', width: '140px', height: '140px' }}></div>
+    {/* <div className="absolute rounded-full bg-gradient-to-r from-green-500 to-teal-400 opacity-50 filter blur-xl animate-pulse delay-3000" style={{ bottom: '40%', left: '15%', width: '90px', height: '90px' }}></div> */}
+    <div className="absolute rounded-full bg-gradient-to-r from-teal-400 to-blue-500 opacity-50 filter blur-xl animate-pulse delay-1000" style={{ bottom: '5%', right: '10%', width: '130px', height: '130px' }}></div>
+    <div className="absolute rounded-full bg-gradient-to-r from-blue-500 to-green-400 opacity-50 filter blur-xl animate-pulse delay-2000" style={{ bottom: '10%', right: '90%', width: '115px', height: '115px' }}></div>
+
+    {/* Add more orbs as needed */}
+  </div>
+
+  <div className="container mx-auto px-4 text-center relative"> {/* Added relative here */}
+    <div className="rounded-3xl borderp-12 max-w-4xl mx-auto">
+      <div className="w-48 h-48 bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
+        <img src="./Logo.png" alt="Logo" className="w-48 h-48"/>
+      </div>
+      <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">Veridian Web</h1>
+      {/* Spakles code */}
+
+       <div className="w-[20rem] md:w-[40rem] h-20 relative md:left-36">
+        {/* Gradients */}
+        <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
+        <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
+        <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
+        <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+ 
+        {/* Core component */}
+        <SparklesCore
+          background="transparent"
+          minSize={0.5}
+          maxSize={1}
+          particleDensity={1200}
+          className="w-full h-1/2"
+          particleColor="#FFFFFF"
+          
+        />
+      </div>
+ 
+        {/* Radial Gradient to prevent sharp edges */}
+        {/* <div className="absolute inset-0 w-full h-1/2 bg-transparent [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div> */}
+
+   
+      <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        Crafting Digital Excellence Through Innovative Web Development & Stunning Graphics Design
+      </p>
+      <Button
+        onClick={() => scrollToSection("contact")}
+        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 text-lg"
+      >
+        Get Started <ArrowRight className="ml-2 w-5 h-5" />
+      </Button>
+    </div>
+  </div>
+</section>
       {/* Services Section */}
       <section id="services" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Services</h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+            <p className="text-md md:text-lg text-blue-100 max-w-2xl mx-auto">
               We offer comprehensive digital solutions to bring your vision to life
             </p>
           </div>
           {/* Service Cards */}
-          <div className="flex justify-between px-5 mx-auto">
+          <div className="flex justify-center px-5 mx-auto">
             {[
               {
                 icon: <Code className="w-8 h-8" />,
@@ -191,8 +227,7 @@ export default function VeridianWebPortfolio() {
             ].map((service, index) => (
               <Card
                 key={index}
-                className="backdrop-blur-md bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-400/30 text-white
-                           hover:bg-blue-800/30 hover:shadow-2xl hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-1 md:max-w-2/3 mx-auto"
+                className="backdrop-blur-md bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-400/30 text-white hover:bg-blue-800/30 hover:shadow-2xl hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-1 md:max-w-2/3 mx-auto"
               >
                 <CardHeader className="text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
@@ -222,7 +257,7 @@ export default function VeridianWebPortfolio() {
           </div>
 
           {/* Project Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
             {[
               {
                 title: "E-Commerce Platform",
