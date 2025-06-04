@@ -206,13 +206,13 @@ export default function VeridianWebPortfolio() {
       <section id="services" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Services</h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Services</h2>
             <p className="text-md md:text-lg text-blue-100 max-w-2xl mx-auto">
               We offer comprehensive digital solutions to bring your vision to life
             </p>
           </div>
           {/* Service Cards */}
-          <div className="flex justify-center px-5 mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3  px-5 mx-auto gap-8">
             {[
               {
                 icon: <Code className="w-8 h-8" />,
@@ -248,17 +248,17 @@ export default function VeridianWebPortfolio() {
 
       {/* Projects Section */}
       <section id="projects" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Projects</h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+        <div className="container mx-auto px-4 ">
+          <div className="text-center mb-16 ">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Projects</h2>
+            <p className="md:text-md text-lg text-blue-100 max-w-2xl mx-auto">
               Showcasing our latest work and successful collaborations
             </p>
           </div>
 
           {/* Project Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
-            {[
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto px-8">
+         {[
               {
                 title: "E-Commerce Platform",
                 category: "Web Development",
@@ -298,7 +298,7 @@ export default function VeridianWebPortfolio() {
             ].map((project, index) => (
               <Card
                 key={index}
-                className="backdrop-blur-md bg-white/10 border-white/20 overflow-hidden hover:bg-white/20 transition-all duration-300 group mx-auto"
+                className="backdrop-blur-md bg-white/10 border-white/20 overflow-hidden hover:bg-white/20 transition-all duration-300 "
               >
                 <div className="relative overflow-hidden">
                   {/* Changed to <img> tag */}
@@ -326,8 +326,8 @@ export default function VeridianWebPortfolio() {
       <section id="pricing" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Pricing Plans</h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">Choose the perfect plan for your business needs</p>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Pricing Plans</h2>
+            <p className="md:text-md text-lg text-blue-100 max-w-2xl mx-auto">Choose the perfect plan for your business needs</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -418,15 +418,15 @@ export default function VeridianWebPortfolio() {
       <section id="contact" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Contact Us</h2>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Contact Us</h2>
+            <p className="md:text-md text-lg text-blue-100 max-w-2xl mx-auto">
               Ready to start your project? Get in touch with us today
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Form */}
-            <Card className="backdrop-blur-md bg-white/10 border-white/20">
+            <Card className="backdrop-blur-md bg-white/10 border-white/20 justify-self-center">
               <CardHeader>
                 <CardTitle className="text-2xl text-white">Send us a message</CardTitle>
                 <CardDescription className="text-blue-100">
