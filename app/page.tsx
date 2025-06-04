@@ -14,13 +14,18 @@ import {
   MapPin,
   ArrowRight,
   CheckCircle,
+  ChevronLeft, // Added for navigation arrows
+  ChevronRight, // Added for navigation arrows
+  Layout, // Added for UI/UX Design icon
+  TrendingUp, // Added for SEO & Digital Marketing icon
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
+// Removed: import Image from "next/image" // This import caused the error as it's Next.js specific
+
 export default function VeridianWebPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -33,56 +38,116 @@ export default function VeridianWebPortfolio() {
   }
 
   return (
-  <div className="min-h-screen bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-800">
-    {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-white/10 border-b border-white/20">
-        <div className="container mx-auto px-4 py-4">
+    // Main container with the overall background gradient matching the image
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 text-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-gradient-to-br from-indigo-900 via-blue-900 text-white">
+        <div className="container mx-auto  ">
           <div className="flex items-center justify-between">
+            {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
-                <Globe className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-white">Veridian Web</span>
+              <img src="./Logo.png" alt="Logo"  className="w-20 h-20"/>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex items-center space-x-8 text-white">
               {["home", "services", "projects", "pricing", "contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className="text-white/90 hover:text-white transition-colors capitalize"
+                  className="text-white/90 hover:text-orange-400 transition-colors capitalize text-lg font-medium"
                 >
                   {item === "home" ? "Home" : item}
                 </button>
               ))}
+              {/* Login Button */}
+              <Button
+                onClick={() => alert("Login functionality not implemented yet!")} // Using alert as a placeholder for now
+                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full shadow-md transition-all duration-300"
+              >
+                Login
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
             </button>
           </div>
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 backdrop-blur-md bg-white/10 rounded-lg border border-white/20">
+            <div className="md:hidden mt-4 pb-4 bg-gradient-to-br from-indigo-900/90 via-blue-900/90 to-purple-900/90 rounded-lg shadow-lg border border-white/20">
               {["home", "services", "projects", "pricing", "contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className="block w-full text-left px-4 py-2 text-white/90 hover:text-white transition-colors capitalize"
+                  className="block w-full text-left px-4 py-3 text-white hover:bg-white/10 transition-colors capitalize text-lg"
                 >
                   {item === "home" ? "Home" : item}
                 </button>
               ))}
+              <div className="px-4 py-2">
+                <Button
+                  onClick={() => alert("Login functionality not implemented yet!")} // Using alert as a placeholder for now
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full shadow-md transition-all duration-300"
+                >
+                  Login
+                </Button>
+              </div>
             </div>
           )}
         </div>
       </nav>
 
-      {/* Home Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center pt-20">
+
+      {/* My  Hero  Section */}
+{/*
+      <section id="home" className="min-h-screen flex items-center justify-center  relative overflow-hidden">
+        <div className="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center justify-between relative z-10">
+          <div className="md:w-1/2 text-center md:text-left mb-12 md:mb-0 relative">
+            <div className="absolute -top-10 left-1/2 md:left-0 transform -translate-x-1/2 md:-translate-x-1/4 w-24 h-24 bg-orange-400 rounded-full opacity-70 blur-xl z-0"></div>
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 relative z-10">
+              Build 
+              Beautiful
+               <span className="text-orange-400">Web</span>
+              <br/>
+              Pages and 
+              <br/>
+              Services.
+            </h1>
+            <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-xl mx-auto md:mx-0 relative z-10">
+                We craft modern, full-stack web solutions — from elegant landing pages to scalable backend systems. Whether you're a startup or an enterprise, we turn your vision into reality.
+ 
+            </p>
+            <Button
+              onClick={() => scrollToSection("contact")}
+              className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 text-lg font-bold rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 relative z-10"
+            >
+              ORDER NOW!
+            </Button>
+          </div>
+
+          <div className="md:w-1/2 flex justify-center items-center relative">
+            <div className="absolute inset-0 bg-purple-700 rounded-full opacity-60 blur-3xl transform scale-150 md:scale-125 lg:scale-100 xl:scale-90 -right-1/4 md:-right-1/3 lg:-right-1/2 xl:-right-1/4 -top-1/4 md:-top-1/3 lg:-top-1/2 xl:-top-1/4"></div>
+
+            <img
+              src="./image.png" // Using the uploaded image as the source
+              alt="Web Development Isometric Illustration"
+              className="relative z-20"
+              // Fallback for image loading errors
+              
+            />
+          </div>
+        </div>
+
+      </section>
+*/}
+
+
+{/* Default Hero Section */}
+  <section id="home" className="min-h-screen flex items-center justify-center pt-20">
         <div className="container mx-auto px-4 text-center">
           <div className="rounded-3xl borderp-12 max-w-4xl mx-auto">
             <div className="w-24 h-24 bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-8">
@@ -101,7 +166,6 @@ export default function VeridianWebPortfolio() {
           </div>
         </div>
       </section>
-
       {/* Services Section */}
       <section id="services" className="py-20">
         <div className="container mx-auto px-4">
@@ -112,41 +176,34 @@ export default function VeridianWebPortfolio() {
             </p>
           </div>
           {/* Service Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center mx-auto">
+          <div className="flex justify-between px-5 mx-auto">
             {[
               {
                 icon: <Code className="w-8 h-8" />,
                 title: "Frontend Development",
-                description: "Landing pages, portfolios, and responsive designs using modern technologies",
+                description: "Crafting intuitive and responsive user interfaces with modern frameworks like React and Next.js.",
               },
               {
                 icon: <Code className="w-8 h-8" />,
                 title: "Full Stack Development",
-                description: "Complete web applications with backend integration and database management",
+                description: "Building robust end-to-end web applications, from database design to API development and deployment.",
               },
-              {
-                icon: <Palette className="w-8 h-8" />,
-                title: "Graphics Design",
-                description: "Creative visual solutions including brochures,logos, branding, and marketing materials",
-              },
-              // {
-              //   icon: <Globe className="w-8 h-8" />,
-              //   title: "Digital Marketing",
-              //   description: "SEO optimization and digital marketing strategies to grow your business",
-              // },
             ].map((service, index) => (
               <Card
                 key={index}
-                className="backdrop-blur-md bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 md:max-w-2/3 mx-auto"
+                className="backdrop-blur-md bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-400/30 text-white
+                           hover:bg-blue-800/30 hover:shadow-2xl hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-1 md:max-w-2/3 mx-auto"
               >
                 <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                     {service.icon}
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardTitle className="text-xl font-semibold text-white">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-blue-100 text-center">{service.description}</CardDescription>
+                  <CardDescription className="text-blue-200 text-center text-base">
+                    {service.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}
@@ -209,12 +266,12 @@ export default function VeridianWebPortfolio() {
                 className="backdrop-blur-md bg-white/10 border-white/20 overflow-hidden hover:bg-white/20 transition-all duration-300 group mx-auto"
               >
                 <div className="relative overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
+                  {/* Changed to <img> tag */}
+                  <img
+                    src={project.image || "https://placehold.co/400x300/6B7280/FFFFFF?text=Project+Image"}
                     alt={project.title}
-                    width={400}
-                    height={300}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    
                   />
                   <Badge className="absolute top-4 left-4 bg-gradient-to-r from-blue-500 to-purple-600">
                     {project.category}
