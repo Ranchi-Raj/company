@@ -4,7 +4,6 @@ import { useState } from "react"
 import {
   Menu,
   X,
-  Code,
   Star,
   Mail,
   Phone,
@@ -19,7 +18,6 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 // Removed: import Image from "next/image" // This import caused the error as it's Next.js specific
-
 export default function VeridianWebPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -55,12 +53,12 @@ export default function VeridianWebPortfolio() {
                 </button>
               ))}
               {/* Login Button */}
-              <Button
+              {/* <Button
                 onClick={() => alert("Login functionality not implemented yet!")} // Using alert as a placeholder for now
                 className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full shadow-md transition-all duration-300"
               >
                 Login
-              </Button>
+              </Button> */}
             </div>
 
             {/* Mobile Menu Button */}
@@ -93,53 +91,6 @@ export default function VeridianWebPortfolio() {
           )}
         </div>
       </nav>
-
-
-      {/* My  Hero  Section */}
-      
-  {/*
-      <section id="home" className="min-h-screen flex items-center justify-center  relative overflow-hidden">
-        <div className="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center justify-between relative z-10">
-          <div className="md:w-1/2 text-center md:text-left mb-12 md:mb-0 relative">
-            <div className="absolute -top-10 left-1/2 md:left-0 transform -translate-x-1/2 md:-translate-x-1/4 w-24 h-24 bg-orange-400 rounded-full opacity-70 blur-xl z-0"></div>
-
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6 relative z-10">
-              Build 
-              Beautiful
-               <span className="text-orange-400">Web</span>
-              <br/>
-              Pages and 
-              <br/>
-              Services.
-            </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-xl mx-auto md:mx-0 relative z-10">
-                We craft modern, full-stack web solutions — from elegant landing pages to scalable backend systems. Whether you're a startup or an enterprise, we turn your vision into reality.
- 
-            </p>
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 text-lg font-bold rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 relative z-10"
-            >
-              ORDER NOW!
-            </Button>
-          </div>
-
-          <div className="md:w-1/2 flex justify-center items-center relative">
-            <div className="absolute inset-0 bg-purple-700 rounded-full opacity-60 blur-3xl transform scale-150 md:scale-125 lg:scale-100 xl:scale-90 -right-1/4 md:-right-1/3 lg:-right-1/2 xl:-right-1/4 -top-1/4 md:-top-1/3 lg:-top-1/2 xl:-top-1/4"></div>
-
-            <img
-              src="./image.png" // Using the uploaded image as the source
-              alt="Web Development Isometric Illustration"
-              className="relative z-20"
-              // Fallback for image loading errors
-              
-            />
-          </div>
-        </div>
-
-      </section>
-*/}
-
 
 {/* Default Hero Section */}
   <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
@@ -202,29 +153,49 @@ export default function VeridianWebPortfolio() {
     </div>
   </div>
 </section>
+
+  <div className="flex justify-center items-center">
+    <hr className=" w-1/2 border-t-2 border-gray-300 dark:border-gray-500 opacity-50 bg-gradient-to-t from-transparent via-transparent to-black dark:via-black dark:to-transparent" style={{ maskImage: "linear-gradient(to bottom, black 50%, transparent)" }} />
+      </div>
       {/* Services Section */}
-     <section className="w-full bg-[#0b1030] py-16 px-4 md:px-8">
+     <section id="services" className="w-full  py-16 px-4 md:px-8">
   <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
 
-    {/* --- Card 1 --- */}
-    <div className="w-full max-w-sm rounded-xl bg-[#0a0f1f] text-white p-6 text-center backdrop-blur-md hover:scale-[1.02] transition duration-300 shadow-md border border-[#1c1f2f]">
-      <img src="./Frontend.png"  alt="Frontend" className="w-Screen h-Screen object-cover" />
-      <h3 className="text-xl font-semibold mb-2">Frontend Development</h3>
-      <p className="text-sm text-slate-300">
-        Crafting intuitive and responsive user interfaces with modern frameworks like React and Next.js.
-      </p>
+   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
+  {
+  [
+  {
+    title: "Frontend Development",
+    description:
+      "Crafting intuitive and responsive user interfaces with modern frameworks like React and Next.js.",
+    image: "./Frontend.png",
+    alt: "Frontend",
+  },
+  {
+    title: "Full Stack Development",
+    description:
+      "Building robust end-to-end web applications, from database design to API development and deployment.",
+    image: "./download.png",
+    alt: "Full Stack",
+  },
+  {
+    title: "Graphics Design",
+    description:
+      "Brochures, posters, logos and much more, tailored to meet the unique needs and goals of our clients.",
+    image: "./graphics.png",
+    alt: "Graphics Design",
+  },
+  ].map((card, index) => (
+    <div
+      key={index}
+      className="w-full max-w-sm rounded-xl bg-[#0a0f1f] text-white p-6 text-center backdrop-blur-md hover:scale-[1.02] transition duration-300 shadow-md border border-[#1c1f2f]"
+    >
+      <img src={card.image} alt={card.alt} className="w-screen objext-cover" />
+      <h3 className="text-xl font-semibold mt-4">{card.title}</h3>
+      <p className="text-sm text-slate-300">{card.description}</p>
     </div>
-
-    {/* --- Card 2 --- */}
-    <div className="w-full max-w-sm rounded-xl bg-[#0a0f1f] text-white p-6 text-center backdrop-blur-md hover:scale-[1.02] transition duration-300 shadow-md border border-[#1c1f2f]">
-          <img src="./download.png" alt="Full Stack" className="w-Screen h-Screen object-cover" />
-      
-      <h3 className="text-xl font-semibold mb-2">Full Stack Development</h3>
-      <p className="text-sm text-slate-300">
-        Building robust end-to-end web applications, from database design to API development and deployment.
-      </p>
-    </div>
-
+  ))}
+</div>
   </div>
 </section>
 
@@ -232,7 +203,7 @@ export default function VeridianWebPortfolio() {
 
       {/* Projects Section */}
       <section id="projects">
-        <div className="container mx-auto px-4 ">
+        <div className="container mx-auto px-4  mt-16">
           <div className="text-center mb-16 ">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Projects</h2>
             <p className="md:text-md text-lg text-blue-100 max-w-2xl mx-auto">
@@ -256,6 +227,13 @@ export default function VeridianWebPortfolio() {
                 image: "/Zentra.png?height=300&width=400",
                 description: "Zentra is a socail media platform for sharing daily thoughts and views though Nudges, A chatbot Zenith is specially designed here to automate the process of creating and publishing the nudges one can like and comment on a nudge",
                 link:"https://zentra-eead.onrender.com/"
+              },
+              {
+                title : "Zuno Gaming",
+                category: "Full Stack Development",
+                image: "/zuno.png?height=300&width=400",
+                description: "A full-featured Casino type gaming platform built with React, Node.js, and Appwrite with payment intergration and a dedicated admin panel for proper scrutiny.",
+                link:"https://zuno-gaming.vercel.app/"
               }
             ].map((project, index) => (
               <Card
@@ -277,7 +255,9 @@ export default function VeridianWebPortfolio() {
                 <CardHeader>
                   <CardTitle className="text-white">{project.title}</CardTitle>
                   <CardDescription className="text-blue-100">{project.description}</CardDescription>
-                  <a className="h-10 w-20 bg-indigo-800 rounded-2xl flex items-center justify-center text-white" href={project.link}>Click  here</a>
+                  <div className="mt-4 flex items-center justify-center">
+                  <a className="h-10 w-20 bg-indigo-800 rounded-2xl flex items-center justify-center text-white" href={project.link} target="_blank">Click  here</a>
+                  </div>
                 </CardHeader>
               </Card>
             ))}
@@ -298,14 +278,15 @@ export default function VeridianWebPortfolio() {
               {
                 name: "Front-End Development",
                 price: "₹10,000",
-                period: "per project",
+                period: "onwards",
                 features: ["Basic Website Design", "Responsive Layout", "Contact Form", "1 Month Support"],
                 popular: false,
+                dollar : "≈ $120",
               },
               {
                 name: "Full Stack Development",
                 price: "₹35,000",
-                period: "per project",
+                period: "onwards",
                 features: [
                   "Custom Web Development",
                   "Advanced Features",
@@ -315,7 +296,23 @@ export default function VeridianWebPortfolio() {
                   "Scalable product design and development"
                 ],
                 popular: true,
-              }
+                dollar: "≈ $420",
+              },
+               {
+                name: "Graphics Design",
+                price: "₹1,000",
+                period: "onwards",
+                features: [
+                  "Brochure Design",
+                  "Poster Design",
+                  "Logo Design",
+                  "Business Card Design",
+                  "Social Media Assets",
+                  "1 Month Support",
+                ],
+                popular: false,
+                dollar: "≈ $12",
+              },
             ].map((plan, index) => (
               <Card
                 key={index}
@@ -334,6 +331,9 @@ export default function VeridianWebPortfolio() {
                   <CardTitle className="text-2xl text-white">{plan.name}</CardTitle>
                   <div className="mt-4">
                     <span className="text-4xl font-bold text-white">{plan.price}</span>
+                    {/* <div className="mt-2"> */}
+                      <span className="text-sm text-blue-100 mr-2"> {plan.dollar}</span>
+                    {/* </div> */}
                     <span className="text-blue-100 ml-2">{plan.period}</span>
                   </div>
                 </CardHeader>
@@ -468,6 +468,7 @@ export default function VeridianWebPortfolio() {
                     <Star className="w-4 h-4 text-yellow-400 mr-2" />
                     Experienced in designing scalable Product in IIT Bhubaneshwar web Design society.
                     <br/>
+                    
                     Designed a full scalable and production ready product for MoodMigo.pvt.lmt
                   </li>
                   <li className="flex items-center">
