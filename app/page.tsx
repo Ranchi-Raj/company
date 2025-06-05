@@ -203,51 +203,35 @@ export default function VeridianWebPortfolio() {
   </div>
 </section>
       {/* Services Section */}
-      <section id="services" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Services</h2>
-            <p className="text-md md:text-lg text-blue-100 max-w-2xl mx-auto">
-              We offer comprehensive digital solutions to bring your vision to life
-            </p>
-          </div>
-          {/* Service Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3  px-5 mx-auto gap-8">
-            {[
-              {
-                icon: <Code className="w-8 h-8" />,
-                title: "Frontend Development",
-                description: "Crafting intuitive and responsive user interfaces with modern frameworks like React and Next.js.",
-              },
-              {
-                icon: <Code className="w-8 h-8" />,
-                title: "Full Stack Development",
-                description: "Building robust end-to-end web applications, from database design to API development and deployment.",
-              },
-            ].map((service, index) => (
-              <Card
-                key={index}
-                className="backdrop-blur-md bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-400/30 text-white hover:bg-blue-800/30 hover:shadow-2xl hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-1 md:max-w-2/3 mx-auto"
-              >
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    {service.icon}
-                  </div>
-                  <CardTitle className="text-xl font-semibold text-white">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-blue-200 text-center text-base">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+     <section className="w-full bg-[#0b1030] py-16 px-4 md:px-8">
+  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
+
+    {/* --- Card 1 --- */}
+    <div className="w-full max-w-sm rounded-xl bg-[#0a0f1f] text-white p-6 text-center backdrop-blur-md hover:scale-[1.02] transition duration-300 shadow-md border border-[#1c1f2f]">
+      <img src="./Frontend.png"  alt="Frontend" className="w-Screen h-Screen object-cover" />
+      <h3 className="text-xl font-semibold mb-2">Frontend Development</h3>
+      <p className="text-sm text-slate-300">
+        Crafting intuitive and responsive user interfaces with modern frameworks like React and Next.js.
+      </p>
+    </div>
+
+    {/* --- Card 2 --- */}
+    <div className="w-full max-w-sm rounded-xl bg-[#0a0f1f] text-white p-6 text-center backdrop-blur-md hover:scale-[1.02] transition duration-300 shadow-md border border-[#1c1f2f]">
+          <img src="./download.png" alt="Full Stack" className="w-Screen h-Screen object-cover" />
+      
+      <h3 className="text-xl font-semibold mb-2">Full Stack Development</h3>
+      <p className="text-sm text-slate-300">
+        Building robust end-to-end web applications, from database design to API development and deployment.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
 
       {/* Projects Section */}
-      <section id="projects" className="py-20">
+      <section id="projects">
         <div className="container mx-auto px-4 ">
           <div className="text-center mb-16 ">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Projects</h2>
@@ -260,41 +244,19 @@ export default function VeridianWebPortfolio() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto px-8">
          {[
               {
-                title: "E-Commerce Platform",
-                category: "Web Development",
-                image: "/placeholder.svg?height=300&width=400",
-                description: "Modern e-commerce solution with payment integration",
+                title: "MoodMigo",
+                category: "Full Stack Development",
+                image: "/Moodmigo.png?height=500&width=400",
+                description: "MoodMigo is a compassionate mental wellness platform designed to support individuals on their emotional health journey. It offers personalized assessments, expert guidance, and tools to promote self-care, emotional resilience, and well-being—all in a safe and user-friendly space.",
+                link:"https://moodmigo.vercel.app/"
               },
               {
-                title: "Brand Identity Design",
-                category: "Graphics Design",
-                image: "/placeholder.svg?height=300&width=400",
-                description: "Complete branding package for tech startup",
-              },
-              {
-                title: "Mobile Banking App",
-                category: "Mobile Development",
-                image: "/placeholder.svg?height=300&width=400",
-                description: "Secure and user-friendly banking application",
-              },
-              {
-                title: "Restaurant Website",
-                category: "Web Development",
-                image: "/placeholder.svg?height=300&width=400",
-                description: "Responsive website with online ordering system",
-              },
-              {
-                title: "Marketing Campaign",
-                category: "Graphics Design",
-                image: "/placeholder.svg?height=300&width=400",
-                description: "Creative marketing materials for product launch",
-              },
-              {
-                title: "Portfolio Website",
-                category: "Web Development",
-                image: "/placeholder.svg?height=300&width=400",
-                description: "Professional portfolio for creative agency",
-              },
+                title: "Zentra",
+                category: "Full Stack Development",
+                image: "/Zentra.png?height=300&width=400",
+                description: "Zentra is a socail media platform for sharing daily thoughts and views though Nudges, A chatbot Zenith is specially designed here to automate the process of creating and publishing the nudges one can like and comment on a nudge",
+                link:"https://zentra-eead.onrender.com/"
+              }
             ].map((project, index) => (
               <Card
                 key={index}
@@ -305,7 +267,7 @@ export default function VeridianWebPortfolio() {
                   <img
                     src={project.image || "https://placehold.co/400x300/6B7280/FFFFFF?text=Project+Image"}
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     
                   />
                   <Badge className="absolute top-4 left-4 bg-gradient-to-r from-blue-500 to-purple-600">
@@ -315,6 +277,7 @@ export default function VeridianWebPortfolio() {
                 <CardHeader>
                   <CardTitle className="text-white">{project.title}</CardTitle>
                   <CardDescription className="text-blue-100">{project.description}</CardDescription>
+                  <a className="h-10 w-20 bg-indigo-800 rounded-2xl flex items-center justify-center text-white" href={project.link}>Click  here</a>
                 </CardHeader>
               </Card>
             ))}
@@ -333,40 +296,26 @@ export default function VeridianWebPortfolio() {
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                name: "Starter",
-                price: "$999",
+                name: "Front-End Development",
+                price: "₹10,000",
                 period: "per project",
-                features: ["Basic Website Design", "Responsive Layout", "Contact Form", "Basic SEO", "1 Month Support"],
+                features: ["Basic Website Design", "Responsive Layout", "Contact Form", "1 Month Support"],
                 popular: false,
               },
               {
-                name: "Professional",
-                price: "$2,499",
+                name: "Full Stack Development",
+                price: "₹35,000",
                 period: "per project",
                 features: [
                   "Custom Web Development",
                   "Advanced Features",
-                  "CMS Integration",
-                  "E-commerce Ready",
+                  "Automation's",
+                  "Chatt-Bot's",
                   "3 Months Support",
-                  "Analytics Setup",
+                  "Scalable product design and development"
                 ],
                 popular: true,
-              },
-              {
-                name: "Enterprise",
-                price: "$4,999",
-                period: "per project",
-                features: [
-                  "Full-Stack Development",
-                  "Custom Integrations",
-                  "Advanced Security",
-                  "Performance Optimization",
-                  "6 Months Support",
-                  "Training Included",
-                ],
-                popular: false,
-              },
+              }
             ].map((plan, index) => (
               <Card
                 key={index}
@@ -517,19 +466,17 @@ export default function VeridianWebPortfolio() {
                 <ul className="space-y-2 text-blue-100">
                   <li className="flex items-center">
                     <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                    5+ Years of Experience
+                    Experienced in designing scalable Product in IIT Bhubaneshwar web Design society.
+                    <br/>
+                    Designed a full scalable and production ready product for MoodMigo.pvt.lmt
                   </li>
                   <li className="flex items-center">
                     <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                    100+ Successful Projects
+                    Sucessfull Delevry of projcts
                   </li>
                   <li className="flex items-center">
                     <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                    24/7 Customer Support
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                    Money-Back Guarantee
+                    24/7  Support
                   </li>
                 </ul>
               </div>
