@@ -33,8 +33,8 @@ export default function VeridianWebPortfolio() {
     // Main container with the overall background gradient matching the image
     <div className="min-h-screen bg-gradient-to-br  from-[#0a0a2b] via-[#0a1a3d] to-[#1a003d] text-white ">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-gradient-to-br from-indigo-900 via-blue-900 text-white">
-        <div className="container mx-auto  ">
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-gradient-to-br from-indigo-900/60 via-blue-900/60 to-purple-900/60 border-b border-white/20 shadow-md text-white">
+          <div className="container mx-auto  ">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center space-x-2">
@@ -42,7 +42,7 @@ export default function VeridianWebPortfolio() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8 text-white">
+            <div className="hidden md:flex items-center space-x-8 mr-8 text-white">
               {["home", "services", "projects", "pricing", "contact"].map((item) => (
                 <button
                   key={item}
@@ -52,13 +52,6 @@ export default function VeridianWebPortfolio() {
                   {item === "home" ? "Home" : item}
                 </button>
               ))}
-              {/* Login Button */}
-              {/* <Button
-                onClick={() => alert("Login functionality not implemented yet!")} // Using alert as a placeholder for now
-                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full shadow-md transition-all duration-300"
-              >
-                Login
-              </Button> */}
             </div>
 
             {/* Mobile Menu Button */}
@@ -69,8 +62,8 @@ export default function VeridianWebPortfolio() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 bg-gradient-to-br from-indigo-900/90 via-blue-900/90 to-purple-900/90 rounded-lg shadow-lg border border-white/20">
-              {["home", "services", "projects", "pricing", "contact"].map((item) => (
+            <div className="md:hidden top-0 w-full z-50 px-4 py-3 backdrop-blur-48xl bg-gradient-to-br from-indigo-900/60 via-blue-900/60 to-purple-900/60 border-b border-white/20 text-white rounded-xl">
+                  {["home", "services", "projects", "pricing", "contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
@@ -80,12 +73,12 @@ export default function VeridianWebPortfolio() {
                 </button>
               ))}
               <div className="px-4 py-2">
-                <Button
+                {/* <Button
                   onClick={() => alert("Login functionality not implemented yet!")} // Using alert as a placeholder for now
                   className="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full shadow-md transition-all duration-300"
                 >
                   Login
-                </Button>
+                </Button> */}
               </div>
             </div>
           )}
@@ -95,7 +88,7 @@ export default function VeridianWebPortfolio() {
 {/* Default Hero Section */}
   <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
   {/* Orb Container */}
-  <div className="absolute inset-0 pointer-events-none z-10">
+  <div className="absolute inset-0 pointer-events-none">
     <div className="absolute rounded-full bg-gradient-to-r from-blue-300 to-purple-400 opacity-50 filter blur-xl animate-pulse" style={{ top: '10%', left: '10%', width: '100px', height: '100px' }}></div>
     <div className="absolute rounded-full bg-gradient-to-r from-purple-400 to-pink-500 opacity-50 filter blur-xl animate-pulse delay-1000" style={{ top: '10%', right: '15%', width: '150px', height: '150px' }}></div>
     <div className="absolute rounded-full bg-gradient-to-r from-pink-500 to-red-400 opacity-50 filter blur-xl animate-pulse delay-2000" style={{ bottom: '20%', left: '25%', width: '80px', height: '80px' }}></div>
@@ -146,7 +139,7 @@ export default function VeridianWebPortfolio() {
       </p>
       <Button
         onClick={() => scrollToSection("contact")}
-        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 text-lg"
+        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-2 py-3 m-2 text-lg"
       >
         Get Started <ArrowRight className="ml-2 w-5 h-5" />
       </Button>
@@ -159,8 +152,8 @@ export default function VeridianWebPortfolio() {
       </div>
       {/* Services Section */}
      <section id="services" className="w-full  py-16 px-4 md:px-8">
-  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
-
+  <div className="max-w-7xl mx-auto flex flex-col  items-center justify-center gap-8">
+    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Services</h2>         
    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
   {
   [
@@ -190,7 +183,7 @@ export default function VeridianWebPortfolio() {
       key={index}
       className="w-full max-w-sm rounded-xl bg-[#0a0f1f] text-white p-6 text-center backdrop-blur-md hover:scale-[1.02] transition duration-300 shadow-md border border-[#1c1f2f]"
     >
-      <img src={card.image} alt={card.alt} className="w-screen objext-cover" />
+      <img src={card.image} alt={card.alt} className="w-screen objext-cover rounded-xl" />
       <h3 className="text-xl font-semibold mt-4">{card.title}</h3>
       <p className="text-sm text-slate-300">{card.description}</p>
     </div>
@@ -199,7 +192,10 @@ export default function VeridianWebPortfolio() {
   </div>
 </section>
 
-
+    <div className="flex justify-center items-center">
+    <hr className=" w-1/2 border-t-2 border-gray-300 dark:border-gray-500 opacity-50 bg-gradient-to-t from-transparent via-transparent to-black dark:via-black dark:to-transparent" style={{ maskImage: "linear-gradient(to bottom, black 50%, transparent)" }} />
+    </div>
+    
 
       {/* Projects Section */}
       <section id="projects">
@@ -256,7 +252,7 @@ export default function VeridianWebPortfolio() {
                   <CardTitle className="text-white">{project.title}</CardTitle>
                   <CardDescription className="text-blue-100">{project.description}</CardDescription>
                   <div className="mt-4 flex items-center justify-center">
-                  <a className="h-10 w-20 bg-indigo-800 rounded-2xl flex items-center justify-center text-white" href={project.link} target="_blank">Click  here</a>
+                  <a className="h-10 w-20 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-lg flex items-center justify-center text-white" href={project.link} target="_blank">Click  here</a>
                   </div>
                 </CardHeader>
               </Card>
@@ -264,6 +260,10 @@ export default function VeridianWebPortfolio() {
           </div>
         </div>
       </section>
+
+      <div className="flex justify-center items-center mt-8">
+    <hr className=" w-1/2 border-t-2 border-gray-300 dark:border-gray-500 opacity-50 bg-gradient-to-t from-transparent via-transparent to-black dark:via-black dark:to-transparent" style={{ maskImage: "linear-gradient(to bottom, black 50%, transparent)" }} />
+    </div>
 
       {/* Pricing Section */}
       <section id="pricing" className="py-20">
@@ -363,6 +363,10 @@ export default function VeridianWebPortfolio() {
         </div>
       </section>
 
+      <div className="flex justify-center items-center">
+    <hr className=" w-1/2 border-t-2 border-gray-300 dark:border-gray-500 opacity-50 bg-gradient-to-t from-transparent via-transparent to-black dark:via-black dark:to-transparent" style={{ maskImage: "linear-gradient(to bottom, black 50%, transparent)" }} />
+    </div>
+
       {/* Contact Section */}
       <section id="contact" className="py-20">
         <div className="container mx-auto px-4">
@@ -423,7 +427,7 @@ export default function VeridianWebPortfolio() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white">Email</h3>
-                      <p className="text-blue-100">hello@veridianweb.com</p>
+                      <p className="text-blue-100">veridian299@gmail.com</p>
                     </div>
                   </div>
                 </CardContent>
@@ -437,7 +441,7 @@ export default function VeridianWebPortfolio() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white">Phone</h3>
-                      <p className="text-blue-100">+1 (555) 123-4567</p>
+                      <p className="text-blue-100">+91 94315 82319, +91 72890 25381</p>
                     </div>
                   </div>
                 </CardContent>
@@ -452,35 +456,42 @@ export default function VeridianWebPortfolio() {
                     <div>
                       <h3 className="text-lg font-semibold text-white">Address</h3>
                       <p className="text-blue-100">
-                        123 Digital Avenue
+                        IIT Bhubaneswar
                         <br />
-                        Tech City, TC 12345
+                        Orissa, 752050
                       </p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-white mb-4">Why Choose Veridian Web?</h3>
-                <ul className="space-y-2 text-blue-100">
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                    Experienced in designing scalable Product in IIT Bhubaneshwar web Design society.
-                    <br/>
-                    
-                    Designed a full scalable and production ready product for MoodMigo.pvt.lmt
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                    Sucessfull Delevry of projcts
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                    24/7  Support
-                  </li>
-                </ul>
-              </div>
+  <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-lg p-6">
+  <h3 className="text-xl font-semibold text-white mb-4">Why Choose Veridian Web?</h3>
+  <ul className="space-y-4 text-blue-100">
+    <li className="flex items-start">
+      <Star className="w-6 h-6 text-yellow-400 mr-3 mt-1" />
+      <span>
+        Experienced in designing scalable products in the IIT Bhubaneswar Web Design Society.
+      </span>
+    </li>
+    <li className="flex items-start">
+      <Star className="w-6 h-6 text-yellow-400 mr-3 mt-1" />
+      <span>
+          Designed a fully scalable and production-ready product for MoodMigo Pvt. Ltd.
+      </span>
+    </li>
+    <li className="flex items-start">
+      <Star className="w-5 h-5 text-yellow-400 mr-3 mt-1" />
+      <span>Successful delivery of projects</span>
+    </li>
+    <li className="flex items-start">
+      <Star className="w-5 h-5 text-yellow-400 mr-3 mt-1" />
+      <span>24/7 Support</span>
+    </li>
+  </ul>
+</div>
+
+
             </div>
           </div>
         </div>
