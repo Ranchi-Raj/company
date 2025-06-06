@@ -10,13 +10,18 @@ import {
   MapPin,
   ArrowRight,
   CheckCircle,
+  
 } from "lucide-react"
+import { useRouter } from "next/navigation";  // in app router, use this import
 import {SparklesCore} from '../components/ui/sparkles'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
+import axios from "axios"
+import { h1 } from "motion/react-client"
+
 // Removed: import Image from "next/image" // This import caused the error as it's Next.js specific
 export default function VeridianWebPortfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -28,7 +33,44 @@ export default function VeridianWebPortfolio() {
     }
     setIsMenuOpen(false)
   }
+  const Router = useRouter();
 
+  const [form,setForm]=useState({
+    firstName:"",
+    lastName:"",
+    email:"",
+    subject:"",
+    message:"",
+  })
+
+   const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+ const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // prevent page reload
+    try {
+      const response = await axios.post("/api/controllers", form);
+      console.log("✅ Response:", response.data);
+      // optionally reset the form
+      setForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      alert('Response submitted, We will react out to you')
+    } catch (error: any) {
+      alert("Please fill all the fields correctly")
+    }
+  };
   return (
     // Main container with the overall background gradient matching the image
     <div className="min-h-screen bg-gradient-to-br  from-[#0a0a2b] via-[#0a1a3d] to-[#1a003d] text-white ">
@@ -73,12 +115,12 @@ export default function VeridianWebPortfolio() {
                 </button>
               ))}
               <div className="px-4 py-2">
-                {/* <Button
-                  onClick={() => alert("Login functionality not implemented yet!")} // Using alert as a placeholder for now
+                <Button
+                  onClick={() => Router.push('/login')} // Using alert as a placeholder for now
                   className="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full shadow-md transition-all duration-300"
                 >
                   Login
-                </Button> */}
+                </Button>
               </div>
             </div>
           )}
@@ -386,35 +428,55 @@ export default function VeridianWebPortfolio() {
                   Fill out the form below and we&apos;ll get back to you within 24 hours
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <Input
-                    placeholder="First Name"
-                    className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
-                  />
-                  <Input
-                    placeholder="Last Name"
-                    className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
-                  />
-                </div>
-                <Input
-                  type="email"
-                  placeholder="Email Address"
-                  className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
-                />
-                <Input
-                  placeholder="Subject"
-                  className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
-                />
-                <Textarea
-                  placeholder="Your Message"
-                  rows={5}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
-                />
-                <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white">
-                  Send Message
-                </Button>
-              </CardContent>
+              <form onSubmit={handleSubmit}>
+      <CardContent className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-4">
+          <Input
+            name="firstName"
+            value={form.firstName}
+            onChange={handleChange}
+            placeholder="First Name"
+            className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
+          />
+          <Input
+            name="lastName"
+            value={form.lastName}
+            onChange={handleChange}
+            placeholder="Last Name"
+            className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
+          />
+        </div>
+        <Input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="Email Address"
+          className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
+        />
+        <Input
+          name="subject"
+          value={form.subject}
+          onChange={handleChange}
+          placeholder="Subject"
+          className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
+        />
+        <Textarea
+          name="message"
+          value={form.message}
+          onChange={handleChange}
+          placeholder="Your Message"
+          rows={5}
+          className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
+        />
+        <Button
+          type="submit"
+          className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
+        >
+          Send Message
+        </Button>
+      </CardContent>
+    </form>
             </Card>
 
             {/* Contact Information */}
