@@ -30,10 +30,10 @@ export async function POST(req: NextRequest) {
       { status: "success", message: "Message sent successfully.", data: newMessage },
       { status: 201 }
     );
-  } catch (error:any) {
+  } catch (error) {
     console.error("POST error:", error);
     return NextResponse.json(
-      { status: "error", message: error.message },
+      { status: "error", message: "Server error" },
       { status: 500 }
     );
   }

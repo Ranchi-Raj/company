@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import {
   Menu,
   X,
@@ -20,7 +20,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import axios from "axios"
-import { h1 } from "motion/react-client"
+// import { h1 } from "motion/react-client"
+import { toast, Toaster } from "react-hot-toast"
 
 // Removed: import Image from "next/image" // This import caused the error as it's Next.js specific
 export default function VeridianWebPortfolio() {
@@ -66,15 +67,17 @@ export default function VeridianWebPortfolio() {
         subject: "",
         message: "",
       });
-      alert('Response submitted, We will react out to you')
-    } catch (error: any) {
-      alert("Please fill all the fields correctly")
+      toast.success('Response submitted, We will react out to you')
+    } catch (e) {
+      console.error("❌ Error:", e);
+      toast.error("Please fill all the fields correctly")
     }
   };
   return (
     // Main container with the overall background gradient matching the image
     <div className="min-h-screen bg-gradient-to-br  from-[#0a0a2b] via-[#0a1a3d] to-[#1a003d] text-white ">
       {/* Navigation */}
+      <Toaster/>
       <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-gradient-to-br from-indigo-900/60 via-blue-900/60 to-purple-900/60 border-b border-white/20 shadow-md text-white">
           <div className="container mx-auto  ">
           <div className="flex items-center justify-between">
